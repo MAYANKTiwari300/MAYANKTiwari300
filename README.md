@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Mayank Tiwari
 - 👀 I’m interested in ..learning new Technologies and skills
-- 🌱 I’m currently learning ...Java
+- 🌱 I’m currently learning ...Java and web development
 - 💞️ I’m looking to collaborate on ...open source project
 - 📫 How to reach me ...linkedin.com/in/mayank-tiwari-b27781266
 
