@@ -4,6 +4,7 @@ body {
   /* The <body> element has a default margin of 8px
      on all sides. This removes the default margins. */
   margin: 0;
+  background-color: #f7f8f8;
 }
 
 /* <p> elements have a default margin on the top
@@ -14,6 +15,7 @@ p {
 
 button {
   cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 select {
@@ -98,4 +100,5 @@ select {
 select:focus,
 input:focus {
   outline: 2px solid rgb(255, 153, 0);
+  outline-offset: 1px;
 }
