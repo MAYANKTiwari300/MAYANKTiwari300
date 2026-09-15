@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: 'DM Sans', sans-serif;
+    color: #17211b;
+    background: #f8f5ef;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    --ink: #17211b;
+    --muted: #68736c;
+    --paper: #f8f5ef;
+    --surface: #fffdf9;
+    --line: #dedfd6;
+    --accent: #dc6047;
+    --accent-dark: #b84b37;
+    --sage: #dbe7d8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--paper);
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.dark {
+    --ink: #f4f0e8;
+    --muted: #a7b0a7;
+    --paper: #17211b;
+    --surface: #202d25;
+    --line: #3c4a40;
+    --accent: #f08064;
+    --accent-dark: #ff9b83;
+    --sage: #304438;
+}
+
+.font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.page-shell {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.post-content {
+    color: var(--ink);
+    font-size: 1.08rem;
+    line-height: 1.85;
+}
+
+.ql-editor {
+    font-size: 1.05rem;
+}
+
+.post-content p {
+    margin-bottom: 0.5rem;
+}
+
+.post-content h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 2rem 0 1rem;
+}
+
+.post-content h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.65rem;
+    line-height: 1.25;
+    margin: 2rem 0 1rem;
+}
+
+.post-content a {
+    color: var(--accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.post-content a:hover {
+    color: var(--accent);
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--muted);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    margin: 2rem 0;
+    padding-left: 1.25rem;
+}
+
+.post-content img {
+    border-radius: 1rem;
+    margin: 2rem auto;
+    max-height: 34rem;
+    object-fit: cover;
+}
+
+@media (max-width: 640px) {
+    .post-content {
+        font-size: 1rem;
+    }
+
+    .post-content h1 {
+        font-size: 1.65rem;
+    }
+}
