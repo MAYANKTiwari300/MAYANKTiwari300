@@ -49,36 +49,40 @@ export default function Header() {
   };
 
   return (
-    <Navbar className='site-header border-b border-[#dedfd6] bg-[#fffdf9]/95 px-4 py-4 backdrop-blur dark:border-[#3c4a40] dark:bg-[#202d25]/95 sm:px-6'>
+    <Navbar className='site-header sticky top-0 z-40 border-b border-[#dedfd6] bg-[#fffdf9]/90 px-4 py-3 backdrop-blur-xl dark:border-[#3c4a40] dark:bg-[#202d25]/90 sm:px-6'>
       <Link
         to='/'
-        className='self-center whitespace-nowrap text-base font-semibold tracking-tight text-[#17211b] dark:text-[#f4f0e8] sm:text-xl'
+        className='self-center whitespace-nowrap text-base font-semibold tracking-tight text-[#17211b] transition-colors hover:text-[#dc6047] dark:text-[#f4f0e8] sm:text-xl'
       >
-        <span className='mr-1 rounded-md bg-[#dc6047] px-2 py-1 text-white'>
+        <span className='mr-2 rounded-lg bg-[#dc6047] px-2.5 py-1.5 text-sm font-bold text-white shadow-sm'>
           Mayank's
         </span>
         Blogify
       </Link>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          type='text'
-          placeholder='Search...'
-          rightIcon={AiOutlineSearch}
-          className='hidden lg:inline [&_input]:border-[#dedfd6] [&_input]:bg-[#f8f5ef] [&_input]:text-[#17211b] [&_input]:placeholder:text-[#68736c] dark:[&_input]:border-[#3c4a40] dark:[&_input]:bg-[#17211b] dark:[&_input]:text-[#f4f0e8]'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+
+      <form onSubmit={handleSubmit} className='hidden flex-1 justify-center lg:flex'>
+        <div className='w-full max-w-md'>
+          <TextInput
+            type='text'
+            placeholder='Search articles...'
+            rightIcon={AiOutlineSearch}
+            className='[&_input]:border-[#dedfd6] [&_input]:bg-[#f8f5ef] [&_input]:text-[#17211b] [&_input]:placeholder:text-[#68736c] dark:[&_input]:border-[#3c4a40] dark:[&_input]:bg-[#17211b] dark:[&_input]:text-[#f4f0e8]'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </form>
-      <Button
-        className='h-10 w-10 border-[#dedfd6] bg-transparent text-[#17211b] hover:bg-[#dbe7d8] lg:hidden dark:border-[#3c4a40] dark:text-[#f4f0e8] dark:hover:bg-[#304438]'
-        color='gray'
-        pill
-        aria-label='Open search'
-        onClick={() => navigate('/search')}
-      >
-        <AiOutlineSearch />
-      </Button>
-      <div className='flex gap-2 md:order-2'>
+
+      <div className='flex items-center gap-2 md:order-2'>
+        <Button
+          className='h-10 w-10 border-[#dedfd6] bg-transparent text-[#17211b] hover:bg-[#dbe7d8] lg:hidden dark:border-[#3c4a40] dark:text-[#f4f0e8] dark:hover:bg-[#304438]'
+          color='gray'
+          pill
+          aria-label='Open search'
+          onClick={() => navigate('/search')}
+        >
+          <AiOutlineSearch />
+        </Button>
         <Button
           className='hidden h-10 w-10 border-[#dedfd6] bg-transparent text-[#17211b] hover:bg-[#dbe7d8] sm:inline dark:border-[#3c4a40] dark:text-[#f4f0e8] dark:hover:bg-[#304438]'
           color='gray'
@@ -98,7 +102,7 @@ export default function Header() {
           >
             <Dropdown.Header>
               <span className='block text-sm'>@{currentUser.username}</span>
-              <span className='block text-sm font-medium truncate'>
+              <span className='block truncate text-sm font-medium'>
                 {currentUser.email}
               </span>
             </Dropdown.Header>
@@ -117,6 +121,7 @@ export default function Header() {
         )}
         <Navbar.Toggle />
       </div>
+
       <Navbar.Collapse>
         <Navbar.Link className='text-[#68736c] hover:text-[#dc6047] dark:text-[#a7b0a7]' active={path === '/'} as={'div'}>
           <Link to='/'>Home</Link>
