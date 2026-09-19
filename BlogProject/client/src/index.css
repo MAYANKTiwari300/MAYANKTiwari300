@@ -18,17 +18,25 @@
     --accent: #dc6047;
     --accent-dark: #b84b37;
     --sage: #dbe7d8;
+    --shadow-soft: 0 20px 45px rgba(23, 33, 27, 0.08);
 }
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    background: var(--paper);
+    background:
+        radial-gradient(circle at top left, rgba(220, 96, 71, 0.08), transparent 18%),
+        linear-gradient(180deg, #f9f6f1 0%, #f8f5ef 100%);
+    color: var(--ink);
 }
 
 button,
@@ -36,6 +44,15 @@ input,
 textarea,
 select {
     font: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+::selection {
+    background: rgba(220, 96, 71, 0.2);
 }
 
 .dark {
@@ -47,6 +64,13 @@ select {
     --accent: #f08064;
     --accent-dark: #ff9b83;
     --sage: #304438;
+    --shadow-soft: 0 24px 48px rgba(0, 0, 0, 0.24);
+}
+
+.dark body {
+    background:
+        radial-gradient(circle at top left, rgba(240, 128, 100, 0.1), transparent 22%),
+        linear-gradient(180deg, #17211b 0%, #101a16 100%);
 }
 
 .font-display {
@@ -56,6 +80,7 @@ select {
 .page-shell {
     background: var(--paper);
     color: var(--ink);
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .eyebrow {
@@ -64,6 +89,38 @@ select {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: white;
+    box-shadow: 0 12px 20px rgba(220, 96, 71, 0.22);
+}
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(220, 96, 71, 0.25);
+}
+
+.secondary-btn {
+    border: 1px solid rgba(23, 33, 27, 0.12);
+    background: rgba(255, 255, 255, 0.28);
+    color: var(--ink);
+}
+
+.dark .secondary-btn {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .post-content {
