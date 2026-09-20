@@ -119,6 +119,11 @@ export default function Header() {
             </Button>
           </Link>
         )}
+        {currentUser && (
+          <Link to='/dashboard' className='hidden text-sm font-semibold text-[#68736c] hover:text-[#dc6047] md:block dark:text-[#a7b0a7]'>
+            Dashboard
+          </Link>
+        )}
         <Navbar.Toggle />
       </div>
 
@@ -132,6 +137,11 @@ export default function Header() {
         <Navbar.Link className='text-[#68736c] hover:text-[#dc6047] dark:text-[#a7b0a7]' active={path === '/projects'} as={'div'}>
           <Link to='/projects'>Projects</Link>
         </Navbar.Link>
+        {currentUser && (
+          <Navbar.Link className='text-[#68736c] hover:text-[#dc6047] dark:text-[#a7b0a7] md:hidden' active={path === '/dashboard'} as={'div'}>
+            <Link to='/dashboard'>Dashboard</Link>
+          </Navbar.Link>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );

@@ -9,7 +9,6 @@ export default function Search() {
       sort: 'desc',
       category: 'uncategorized',
     });
-    console.log(sidebarData);
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showMore, setShowMore] = useState(false);
@@ -21,14 +20,11 @@ export default function Search() {
       const searchTermFromUrl = urlParams.get('searchTerm');
       const sortFromUrl = urlParams.get('sort');
       const categoryFromUrl = urlParams.get('category');
-      if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
-        setSidebarData({
-          ...sidebarData,
-          searchTerm: searchTermFromUrl,
-          sort: sortFromUrl,
-          category: categoryFromUrl,
-        });
-      }
+      setSidebarData({
+        searchTerm: searchTermFromUrl || '',
+        sort: sortFromUrl || 'desc',
+        category: categoryFromUrl || 'uncategorized',
+      });
 
       const fetchPosts = async () => {
         setLoading(true);
@@ -51,6 +47,11 @@ export default function Search() {
       };
       fetchPosts();
     }, [location.search]);
+
+    const clearFilters = () => {
+      setSidebarData({ searchTerm: '', sort: 'desc', category: 'uncategorized' });
+      navigate('/search');
+    };
 
     const handleChange = (e) => {
       if (e.target.id === 'searchTerm') {
@@ -137,14 +138,17 @@ export default function Search() {
                 <option value='javascript'>JavaScript</option>
               </Select>
             </div>
-            <Button type='submit' outline gradientDuoTone='purpleToPink'>
+              <Button type='submit' outline gradientDuoTone='purpleToPink'>
               Apply Filters
             </Button>
+              <Button type='button' color='light' onClick={clearFilters}>
+                Clear filters
+              </Button>
           </form>
         </div>
         <div className='w-full'>
           <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 '>
-            Posts results:
+            {posts.length} {posts.length === 1 ? 'post' : 'posts'} found
           </h1>
           <div className='p-7 flex flex-wrap gap-4'>
             {!loading && posts.length === 0 && (
